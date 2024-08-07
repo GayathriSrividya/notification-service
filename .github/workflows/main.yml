@@ -65,4 +65,4 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ vars.DOCKERHUB_USERNAME }}/notification-service:${{ github.ref_name }}
+            ${{ vars.DOCKERHUB_USERNAME }}/notification-service:test
