@@ -64,7 +64,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./service/target
-          file: ../../Dockerfile
+          file: ./Dockerfile
           push: true
           tags: |
             ${{ vars.DOCKERHUB_USERNAME }}/notification-service:test
