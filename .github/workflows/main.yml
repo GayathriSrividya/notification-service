@@ -45,13 +45,14 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: notification-service
+          path: ./service/target
 
       - name: Print working directory and list files after downloading artifact
         run: |
           echo "Working Directory after Downloading Artifact:"
           pwd
           echo "Listing files:"
-          ls -la
+          ls -la ./service/target
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -62,7 +63,8 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          file: ./Dockerfile
+          context: ./service/target
+          file: ../../Dockerfile
           push: true
           tags: |
             ${{ vars.DOCKERHUB_USERNAME }}/notification-service:test
